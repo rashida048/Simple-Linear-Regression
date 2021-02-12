@@ -1,0 +1,112 @@
+
+```{r}
+heights = c(184.5, 171.4, 170.1, 160.9, 164.9, 150, 165.4, 151.3, 166.1, 179.4)
+```
+
+
+```{r}
+weights = c(94.8, 90.4, 83.4, 109.8, 55.2, 64.4, 76.6, 64.5, 72.4, 108.3)
+```
+
+```{r}
+
+```
+
+```{r}
+al = read.csv('arm_leg.csv')
+```
+
+
+```{r}
+arm = al$arm
+leg = al$leg
+```
+
+
+```{r}
+arm_bar = mean(arm)
+leg_bar = mean(leg)
+```
+
+```{r}
+leg_bar
+```
+
+
+```{r}
+s_arm = sd(arm)
+s_leg = sd(leg)
+```
+
+
+```{r}
+s_leg
+```
+
+
+
+```{r}
+r = cor(arm, leg)
+r
+```
+
+```{r}
+plot(arm, leg, main="Arm length vs Leg length",
+     xlab="Arm Length", ylab = "Leg Length")
+```
+
+```{r}
+n = nrow(al)
+n
+```
+
+```{r}
+beta1 = r*s_leg/s_arm
+beta0 = leg_bar - beta1*arm_bar
+```
+
+```{r}
+beta1
+beta0
+```
+
+```{r}
+m = lm(leg~arm)
+m
+```
+
+```{r}
+plot(arm, leg, main="Arm Length vs Leg Length",
+     xlab="Length of Arms", ylab = "Length of Legs")
+abline(m, lty = 8, col="red")
+```
+
+```{r}
+1.9877 + 0.9721 * 40.1
+```
+
+```{r}
+qf(0.95, df1 = 1, df2 = 28)
+```
+
+```{r}
+1-pf(31.896, 1, 28)
+```
+
+```{r}
+anova(m)
+```
+
+```{r}
+min(arm)
+```
+
+```{r}
+max(arm)
+```
+
+```{r}
+R_squared_adj = 1 - 8.187/(s_leg)**2
+R_squared_adj
+```
+
